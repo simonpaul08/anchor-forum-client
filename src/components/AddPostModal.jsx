@@ -11,7 +11,7 @@ const AddPostModal = ({ setIsAddPost, getAllPosts  }) => {
         e.preventDefault();
 
         try {
-            const res = await axios.post(`${import.meta.env.VITE_APP_API}post`, { name, content, ownner: currentUser?._id });
+            const res = await axios.post(`${import.meta.env.VITE_APP_API}post`, { name, content, owner: currentUser?._id });
             if(res?.data?.message){
                 await getAllPosts();
                 setIsAddPost(false);
@@ -25,7 +25,7 @@ const AddPostModal = ({ setIsAddPost, getAllPosts  }) => {
         <div className="modal-content">
             <form onSubmit={handleOnSubmit}>
                 <input type="text" className='form-input' value={name} onChange={(e) => setName(e.target.value)} placeholder='Enter Name' required/>
-                <input type="text" className='form-input' value={content} onChange={(e) => setName(e.target.value)} placeholder='Enter Content' required/>
+                <input type="text" className='form-input' value={content} onChange={(e) => setContent(e.target.value)} placeholder='Enter Content' required/>
                 <button className='form-btn' type='submit'>Post</button>
             </form>
         </div>
