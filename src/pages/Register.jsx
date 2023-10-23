@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import VerifyOtpModal from '../components/VerifyOtpModal';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
 
@@ -30,6 +31,7 @@ const Register = () => {
                         <input type="text" className='form-input' placeholder='Enter Name' value={name} onChange={(e) => setName(e.target.value)} required />
                         <input type="email" className='form-input' placeholder='Enter Email' value={email} onChange={(e) => setEmail(e.target.value)} required />
                         <button type='submit' className='form-btn'>Register</button>
+                        <p>Already have account? <Link to="/">Login</Link></p>
                     </form>
                 </div>
             </div>
