@@ -15,6 +15,7 @@ const AuthContextProvider = ({ children }) => {
 
     const logout = () => {
         setCurrentUser(null);
+        window.localStorage.removeItem('user');
     }
 
     let value = {
@@ -23,7 +24,7 @@ const AuthContextProvider = ({ children }) => {
 
     useEffect(() => {
         let user = JSON.parse(window.localStorage.getItem('user'));
-        if(user){
+        if(user?.email){
             setCurrentUser(user);
         }
     }, [])

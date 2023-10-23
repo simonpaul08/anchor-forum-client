@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import AddPostModal from '../components/AddPostModal';
 import { useAuthContext } from '../context/AuthContext';
+import Post from '../components/Post';
 
 const Dashboard = () => {
 
@@ -25,23 +26,15 @@ const Dashboard = () => {
     }, [])
     return (
         <>
-        {isAddPost && <AddPostModal setIsAddPost={setIsAddPost} getAllPosts={getAllPosts}/>}
+            {isAddPost && <AddPostModal setIsAddPost={setIsAddPost} getAllPosts={getAllPosts} />}
             <div className='dashboard'>
                 <div className="dashboard-container">
-                    <h3>Forum Posts</h3>
                     <div className="dashboard-header">
                         <button className='addPostBtn' onClick={(e) => setIsAddPost(true)}>Add Post</button>
-                        <button className='addPostBtn' onClick={logout}>Logout</button>
                     </div>
                     {posts?.map(post => {
                         return (
-                            <div className='post'>
-                                <h4>{post?.name}</h4>
-                                <p>{post?.content}</p>
-                                <button type='button' className='reply-btn'>
-                                    Reply
-                                </button>
-                            </div>
+                            <Post post={post} key={post?._id}/>
                         )
                     })}
                 </div>
