@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const AuthContext = createContext();
@@ -11,8 +12,13 @@ const AuthContextProvider = ({ children }) => {
 
     const [currentUser, setCurrentUser] = useState(null);
 
+
+    const logout = () => {
+        setCurrentUser(null);
+    }
+
     let value = {
-        currentUser, setCurrentUser
+        currentUser, setCurrentUser, logout
     }
 
     useEffect(() => {
